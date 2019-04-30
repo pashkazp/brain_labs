@@ -5,6 +5,12 @@ import ua.zp.brain.labs.oop.basics.classes.Book;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Extended Book object that represents extended Class book
+ *
+ * @author Pavlo Degtyaryev
+ * @version 1.0
+ */
 public class BookExt extends Book {
     private int chaptersCount;
     private int currentPage;
@@ -15,28 +21,40 @@ public class BookExt extends Book {
         return chapters;
     }
 
+    /**
+     * Set chaters and calculate chapters count
+     * @param chapters string of whole chapters
+     */
     public void setChapters(String chapters) {
         this.chapters = chapters;
         this.setChaptersCount(chapters.split(";").length);
     }
 
+    /**
+     * Scroll pages of book to pege number if it is possible
+     * @param pageNum the number of the page you are looking for
+     */
     public void scrollToPage(int pageNum) {
         if (pageNum > getPages() || pageNum < 0) {
             System.out.println("Page number is unreachable. Scroll cancelled.");
             return;
         }
-        System.out.println("Total pages : " + getPages() + ". Current page is : " + getCurrentPage() + ". Try search the " + pageNum + " page.");
+        System.out.println("Total pages : " + getPages() +
+                ". Current page is : " + getCurrentPage() +
+                ". Try search the " + pageNum + " page.");
         int leftP = 0;
         int rightP = getPages();
         while (pageNum != getCurrentPage()) {
             if (pageNum > getCurrentPage()) {
                 leftP = getCurrentPage();
-                System.out.print("Divide the right side between " + leftP + " and " + rightP + " page numbers in about half.");
+                System.out.print("Divide the right side between " + leftP + " and " + rightP +
+                        " page numbers in about half.");
                 setCurrentPage((leftP + rightP) / 2);
                 System.out.println(" Current page is set to: " + getCurrentPage());
             } else {
                 rightP = getCurrentPage();
-                System.out.print("Divide the left side between " + leftP + " and  " + rightP + " page numbers in about half.");
+                System.out.print("Divide the left side between " + leftP + " and  " + rightP +
+                        " page numbers in about half.");
                 setCurrentPage((leftP + rightP) / 2);
                 System.out.println(" Current page is set to: " + getCurrentPage());
             }
