@@ -1,8 +1,11 @@
 package ua.zp.brain.labs.oop.basics.lab9;
 
 /**
- * A simple program that represents the {@link Pizza} object. The program creates a menu - the pizza list is offered.
+ * A simple program that represents the {@link Pizzeria} object. The program creates a menu - the {@link Pizza} list is offered.
  * Then he creates some pizzas and puts them in the menu. After that, the program displays the proposed menu.
+ *
+ * @author Pavlo Degtyaryev
+ * @version 1.0
  */
 public class Pizzeria {
 
@@ -12,7 +15,7 @@ public class Pizzeria {
         menu[1] = new Pizza("Перчино", "Анчоусы;Сыр;Томаты;Специи", 716, 200);
         menu[2] = new Pizza("Офигевано", "Апельсины;Сицилийские груши", 2456, 300);
 
-        System.out.println(   "Меню пиццерии\n=============");
+        System.out.println("Меню пиццерии\n=============");
         for (Pizza p : menu) {
             if (p != null) {
                 System.out.println(p + "\n..........");

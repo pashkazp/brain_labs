@@ -14,10 +14,10 @@ public class PostOfficeExt extends PostOffice {
      * Calulate Volumetric Weight of parcel
      *
      * @param height in cm
-     * @param width in cm
-     * @param dept in cm
+     * @param width  in cm
+     * @param dept   in cm
      * @param weight in gramm
-     * @return Volumetric Weight of parcel
+     * @return int
      */
     public static int CalculateVolumetricWeight(int height, int width, int dept, int weight) {
         int volumetricWeight = height * width * dept;
@@ -27,10 +27,10 @@ public class PostOfficeExt extends PostOffice {
     /**
      * Calulate Volumetric Weight of cylindrical parcel
      *
-     * @param height mm
+     * @param height  mm
      * @param diametr mm
-     * @param weight gramm
-     * @return Volumetric Weight of parcel
+     * @param weight  gramm
+     * @return int
      */
     public static int CalculateVolumetricWeight(int height, int diametr, int weight) {
         int volumetricWeight = height * diametr;

@@ -23,6 +23,7 @@ public class BookExt extends Book {
 
     /**
      * Set chaters and calculate chapters count
+     *
      * @param chapters string of whole chapters
      */
     public void setChapters(String chapters) {
@@ -32,6 +33,7 @@ public class BookExt extends Book {
 
     /**
      * Scroll pages of book to pege number if it is possible
+     *
      * @param pageNum the number of the page you are looking for
      */
     public void scrollToPage(int pageNum) {
