@@ -12,7 +12,8 @@ public class Library {
 
     /**
      * block of instance initialisation that creates {@link Film} array[5] and instantiated two favorite Films
-     */ {
+     */
+    {
         films = new Film[5];
         films[0] = new Film("Matrix", "02:16:00", Film.GENRE_ACTION, Film.GENRE_SCI_FI);
         films[1] = new Film("Exam", "01:41:00", Film.GENRE_HORROR,

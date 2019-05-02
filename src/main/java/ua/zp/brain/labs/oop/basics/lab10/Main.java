@@ -9,11 +9,12 @@ package ua.zp.brain.labs.oop.basics.lab10;
  */
 public class Main {
     public static void main(String[] args) {
+        final String CAPACITY_LIMIT_REACHED = "Capacity limit is reached.";
         Library library = new Library("Favorites");
 
         int i = library.getFreeIndex();
         if (i == -1) {
-            System.out.println("Capacity limit is reached.");
+            System.out.println(CAPACITY_LIMIT_REACHED);
         } else {
             library.getFilms()[i] = new Film("The Shawshank Redemption", "02:22:00",
                     Film.GENRE_DRAMA);
@@ -21,15 +22,15 @@ public class Main {
 
         i = library.getFreeIndex();
         if (i == -1) {
-            System.out.println("Capacity limit is reached.");
+            System.out.println(CAPACITY_LIMIT_REACHED);
         } else {
-            library.getFilms()[i] = new Film("The Silence of the Lambs", "02:22:00",
+            library.getFilms()[i] = new Film("The Silence of the Lambs", "01:49:00",
                     Film.GENRE_CRIME, Film.GENRE_DRAMA, Film.GENRE_THRILLER);
         }
 
         i = library.getFreeIndex();
         if (i == -1) {
-            System.out.println("Capacity limit is reached.");
+            System.out.println(CAPACITY_LIMIT_REACHED);
         } else {
             library.getFilms()[i] = new Film("Back to the Future", "01:56:00",
                     Film.GENRE_ADVENTURE, Film.GENRE_COMEDY, Film.GENRE_SCI_FI);
@@ -37,7 +38,7 @@ public class Main {
 
         i = library.getFreeIndex();
         if (i == -1) {
-            System.out.println("Capacity limit is reached.");
+            System.out.println(CAPACITY_LIMIT_REACHED);
         } else {
             library.getFilms()[i] = new Film("Alien", "01:57:00",
                     Film.GENRE_HORROR, Film.GENRE_SCI_FI);

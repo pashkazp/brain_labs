@@ -38,8 +38,9 @@ public class Film {
     private Time duration;
     private String[] genres;
 
-    // block of instance initialisation
-    {
+    /**
+     * block of instance initialisation that prints service information
+     */ {
         System.out.println("Creates new Film");
     }
 
