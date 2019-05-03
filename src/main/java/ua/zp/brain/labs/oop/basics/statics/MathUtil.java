@@ -8,15 +8,19 @@ package ua.zp.brain.labs.oop.basics.statics;
  */
 public class MathUtil {
 
+    private MathUtil() {
+        // Denied to create instance of this class
+    }
+
     /**
      * Sum of several values.
      *
      * @param values values sequence
      * @return sum result.
      */
-    public static int sum(int ...values) {
+    public static int sum(int... values) {
         int result = 0;
-        for(int a: values) {
+        for (int a : values) {
             result += a;
         }
         return result;
@@ -28,9 +32,14 @@ public class MathUtil {
      * @param values values sequence
      * @return multiply result.
      */
-    public static int mul(int ...values) {
+    public static int mul(int... values) {
         int result = 0;
-        // TODO  complete this.
+        if (values != null && values.length > 0) {
+            result = values[0];
+            for (int i = 1; i < values.length; i++) {
+                result *= values[i];
+            }
+        }
         return result;
     }
 
@@ -38,12 +47,15 @@ public class MathUtil {
      * Print all numbers unless {@param interrupt }
      *
      * @param skipValue skipped value
-     * @param values  values sequence
+     * @param values    values sequence
      */
-    public static void printWithSkip(int skipValue, int ...values) {
-        //TODO modify this method to complete the output of characters but skip the specified value.
-        for(int a: values) {
-            System.out.print(a+" ");
+    public static void printWithSkip(int skipValue, int... values) {
+        if (values != null && values.length > 0) {
+            for (int a : values) {
+                if (a != skipValue) {
+                    System.out.print(a + " ");
+                }
+            }
         }
     }
 
@@ -51,12 +63,16 @@ public class MathUtil {
      * Print all numbers before reaching {@param interrupt }
      *
      * @param interruptValue force end value
-     * @param values  values sequence
+     * @param values         values sequence
      */
-    public static void printToValue(int interruptValue, int ...values) {
-        //TODO modify this method to complete the output of characters upon reaching the specified interrupt parameter
-        for(int a: values) {
-            System.out.print(a+" ");
+    public static void printToValue(int interruptValue, int... values) {
+        if (values != null && values.length > 0) {
+            for (int a : values) {
+                if (a == interruptValue) {
+                    break;
+                }
+                System.out.print(a + " ");
+            }
         }
     }
 
@@ -68,39 +84,51 @@ public class MathUtil {
      */
     public static int factorial(int a) {
         int result = 1;
-        // TODO complete this. Calc FACTORIAL for 'a'
+        if (a >= 0) {
+            while (a > 1) {
+                result *= a--;
+            }
+        } else {
+            return 0;
+        }
         return result;
     }
 
     /**
      * Calc harmonic progression for value with ratio.
      *
-     * @param a base value
-     * @param q ratio
+     * @param a     base value
+     * @param q     ratio
      * @param count calc count
      * @return harmonic progression result.
      */
     public static int harmonicProgression(int a, int q, int count) {
         int result = a;
-        // TODO complete this. Calc Harmonic Progression.
+        if (count > 1) { // is it an geometric progression?
+            for (int i = 1; i < count; i++) {
+                result += result * q;
+            }
+        } else {
+            return 0;
+        }
         return result;
     }
 
     /**
      * Calc harmonic arithmetic for value with ratio.
      *
-     * @param a base value
-     * @param q ratio
+     * @param a     base value
+     * @param q     ratio
      * @param count calc count
      * @return arithmetic progression result.
      */
     public static int arithmeticProgression(int a, int q, int count) {
         int result = a;
-        // TODO complete this. Calc Arithmetic Progression.
+        if (count > 1) { // is it an arithmetic progression?
+            result = (2 * a + q * (count - 1)) / 2 * count;
+        } else {
+            return 0;
+        }
         return result;
-    }
-
-    private MathUtil() {
-        // Denied to create instance of this class
     }
 }
