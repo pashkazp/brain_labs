@@ -11,9 +11,13 @@ public class TransportMain {
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
-        Passport passport = new Passport("Volga","Black","1234567678",null,formatter.parse("12-Jan-2018"));
+        Passport passport = new Passport("Volga", "Black", "1234567678",
+                null, formatter.parse("12-Jan-2018"));
+
         System.out.println(passport);
+
         passport = passport.changeOwner("Иванов Иван Иванович");
+
         System.out.println(passport);
 
     }

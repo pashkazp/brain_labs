@@ -12,12 +12,17 @@ public class TechnicsMain {
     public static void main(String[] args) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
 
-        Passport passport = new Passport("Viola 203", "123897890234978",
+        Passport passport = new Passport(
+                "Viola 203", "123897890234978",
                 formatter.parse("01-Apr-1970"),
                 formatter.parse("02-May-1970"),
                 formatter.parse("03-Jun-1970"));
+
         System.out.println(passport);
-        PassportUtil.warrantyReplace(passport,new Date());
+
+        PassportUtil.warrantyReplace(passport, new Date());
+
         System.out.println(passport);
+
     }
 }
