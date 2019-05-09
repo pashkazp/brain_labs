@@ -10,9 +10,9 @@ public class Test {
         System.out.println("Sum of values: " + sum(3, 3, 5, 10));
         System.out.println("Multiply of values: " + mul(1, 1, 5, 10));
         System.out.println("Multiply of values: " + mul(1, 1, 5, 10, -100, 15));
+        System.out.println("Multiply of values: " + mul(1));
         System.out.println("Multiply of values: " + mul());
         System.out.println("Multiply of values: " + mul(null));
-
         // Part 2
         int[] a = new int[0];
 
@@ -38,7 +38,6 @@ public class Test {
 
         System.out.println("\nskip: 3 in" + " sequence: 1, 5, 10, 1, 2, 1, 5, 1, 8, 8");
         printWithSkip(3, 1, 5, 10, 1, 2, 1, 5, 1, 8, 8);
-
 
 
         System.out.print("\n\nPrint with interrupt: ");

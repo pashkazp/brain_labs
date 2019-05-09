@@ -27,9 +27,20 @@ public class MathUtil {
     }
 
     /**
-     * Multiply of several values.
+     * Returns the result of multiplying an arbitrary number of multipliers.
      *
-     * @param values values sequence
+     * <p>Special cases:
+     * <ul>
+     *
+     * <li> If argument is Null then the result  is 0
+     *
+     * <li> If q-ty of multipliers is zero then the result is 0
+     *
+     * </ul>
+     *
+     * <p>
+     *
+     * @param values some int sequence
      * @return multiply result.
      */
     public static int mul(int... values) {
@@ -40,11 +51,23 @@ public class MathUtil {
                 result *= values[i];
             }
         }
+        Math.hypot(1f, 1f);
         return result;
     }
 
     /**
-     * Print all numbers unless {@param interrupt }
+     * Prints a sequence of numbers except for those that match the sent parameter.
+     *
+     * <p> Special cases:
+     * <ul>
+     *
+     * <li> If parameter values is Null then prints nothing
+     *
+     * <li> If q-ty of int values is zero then prints nothing
+     *
+     * </ul>
+     *
+     * <p>
      *
      * @param skipValue skipped value
      * @param values    values sequence
@@ -60,7 +83,16 @@ public class MathUtil {
     }
 
     /**
-     * Print all numbers before reaching {@param interrupt }
+     * Prints the sequence of numbers until it encounters the same as the sent as a parameter interruptValue.
+     * <p> Special cases:
+     * <ul>
+     *
+     * <li> If parameter values is Null then prints nothing
+     *
+     * <li> If q-ty of int values is zero then prints nothing
+     *
+     * </ul>
+     * <p>
      *
      * @param interruptValue force end value
      * @param values         values sequence
@@ -77,9 +109,9 @@ public class MathUtil {
     }
 
     /**
-     * Calc factorial value.
+     * Calculates the factorial of the number. The value must be positive or zero. If not, returns 0.
      *
-     * @param a factorial value.
+     * @param a calculated value.
      * @return factorial result of {@param a}.
      */
     public static int factorial(int a) {
@@ -95,7 +127,7 @@ public class MathUtil {
     }
 
     /**
-     * Calc harmonic progression for value with ratio.
+     * Calculate geometric progression for value with ratio. The count should be great than 1. In not, returns zero.
      *
      * @param a     base value
      * @param q     ratio
@@ -115,7 +147,7 @@ public class MathUtil {
     }
 
     /**
-     * Calc harmonic arithmetic for value with ratio.
+     * Calculate the arithmetic progression for value with ratio. If count les then 2 returns zero
      *
      * @param a     base value
      * @param q     ratio
