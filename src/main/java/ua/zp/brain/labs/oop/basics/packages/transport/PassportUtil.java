@@ -20,11 +20,12 @@ class PassportUtil {
      * @param newOwner    String name of new owner
      * @return new {@link Passport}
      */
-     static Passport changeOwner(Passport oldPassport, String newOwner) {
+    static Passport changeOwner(Passport oldPassport, String newOwner) {
         if (oldPassport != null && newOwner != null && newOwner.length() > 0) {
             Passport passport = new Passport(oldPassport.getModel(), oldPassport.getColor(),
                     oldPassport.getEngineNumber(), newOwner, new Date());
             return passport;
-        } else return null;
+        }
+        return null;
     }
 }
