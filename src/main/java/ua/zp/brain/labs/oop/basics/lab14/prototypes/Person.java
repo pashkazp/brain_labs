@@ -1,4 +1,4 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.prototypes;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -98,11 +98,11 @@ public class Person {
     @Override
     public String toString() {
         return "Person{ " +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", birthDay=" + birthDay +
-                ", phone='" + phone + '\'' +
+                "firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", patronymic='" + getPatronymic() + '\'' +
+                ", birthDay=" + getBirthDay() +
+                ", phone='" + getPhone() + '\'' +
                 '}';
     }
 

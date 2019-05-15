@@ -1,4 +1,6 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.actors;
+
+import ua.zp.brain.labs.oop.basics.lab14.prototypes.Person;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -68,27 +70,27 @@ public class Client extends Person {
 
     @Override
     public void sayHello() {
-        System.out.println("Hello!");
+        System.out.println("\nClient:    Hello!");
     }
 
     @Override
     public void sayGoodBye() {
-        System.out.println("Goodbye!");
+        System.out.println("\nClient:    Goodbye!");
     }
 
     public void sayMeAbout() {
-        System.out.println("Please tell me about this product.");
+        System.out.println("\nClient:    Please tell me about this product.");
     }
 
     public void buyProduct() {
-        System.out.println("To go nuts! Give two!");
+        System.out.println("\nClient:    To go nuts! Give two!");
     }
 
     @Override
     public String toString() {
         return "Client{ " + super.toString() +
-                "money=" + money +
-                ", discountCard='" + discountCard + '\'' +
+                "money=" + getMoney() +
+                ", discountCard='" + getDiscountCard() + '\'' +
                 "}";
     }
 

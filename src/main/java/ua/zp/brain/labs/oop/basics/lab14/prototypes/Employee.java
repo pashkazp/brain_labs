@@ -1,4 +1,4 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.prototypes;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -63,32 +63,32 @@ public class Employee extends Person {
     }
 
     public void comeToWork() {
-        System.out.println("Come to work on time");
+        System.out.println("\nSomeone:   Come to work on time");
     }
 
     public void goToHaveLunch() {
-        System.out.println("Go to have lunch");
+        System.out.println("\nSomeone:   Go to have lunch");
     }
 
     public void toWork() {
-        System.out.println("To work in working time for money.");
+        System.out.println("\nSomeone:   To work in working time for money.");
     }
 
     @Override
     public void sayHello() {
-        System.out.println("Good morning!");
+        System.out.println("\nSomeone:   Good morning!");
     }
 
     @Override
     public void sayGoodBye() {
-        System.out.println("See you tomorrow.");
+        System.out.println("\nSomeone:   See you tomorrow.");
     }
 
     @Override
     public String toString() {
         return "Employee{ " + super.toString() +
-                " employmentDateFrom=" + employmentDateFrom +
-                ", salary=" + salary +
+                " employmentDateFrom=" + getEmploymentDateFrom() +
+                ", salary=" + getSalary() +
                 "}";
     }
 

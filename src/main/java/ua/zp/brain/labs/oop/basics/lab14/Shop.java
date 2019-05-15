@@ -1,5 +1,10 @@
 package ua.zp.brain.labs.oop.basics.lab14;
 
+import ua.zp.brain.labs.oop.basics.lab14.actors.Cashier;
+import ua.zp.brain.labs.oop.basics.lab14.actors.Client;
+import ua.zp.brain.labs.oop.basics.lab14.actors.Guardian;
+import ua.zp.brain.labs.oop.basics.lab14.actors.Manager;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,44 +15,33 @@ import java.util.Objects;
  * @version 1.0
  */
 public class Shop {
-    private static Manager manager;
-    private static Cashier cashier;
-    private static Guardian guardian;
-    private static Client client;
+    private Manager manager;
+    private Cashier cashier;
+    private Guardian guardian;
+    private Client client;
     private String title = "";
     private String address = "";
 
-
-    public Shop() {
-    }
-
+    /**
+     * Construct Shop with specifies Title and Address
+     *
+     * @param title   String that specifies the Shop Title
+     * @param address String that specifies the Shop Address
+     */
     public Shop(String title, String address) {
         this.title = title;
         this.address = address;
     }
 
+    /**
+     * Construct empty Shop
+     */
+    public Shop() {
+    }
+
     public static void main(String[] args) {
 
-        Shop shop = new Shop("Ikea", "Somewhere nearby.");
-
-        manager = new Manager("Petro", "Petrenko", "Petrovich",
-                LocalDate.of(1966, 10, 15), "32223223",
-                LocalDate.of(2018, 12, 12),
-                8000L, "Sales department");
-
-        cashier = new Cashier("Valya", "Petrova", "Olegovna",
-                LocalDate.of(1996, 02, 1), "3456-09-09",
-                LocalDate.of(2019, 03, 11),
-                4000L, 25);
-
-        guardian = new Guardian("Vasya", "Sidorenko", "Hvedorytch",
-                LocalDate.of(1996, 02, 1), "98734979345",
-                LocalDate.of(2019, 03, 11),
-                5000L);
-
-        client = new Client("Valya", "Petrova", "Olegovna",
-                LocalDate.of(1996, 02, 1), "3456-09-09",
-                500000L, "1234-5678-9012-3456");
+        Shop shop = shopInit("Ikea", "Somewhere nearby.");
 
         // Shop is opening
         shop.openUp();
@@ -59,19 +53,60 @@ public class Shop {
         shop.goToLunch();
 
         //Actors and performers
-        System.out.println("\nActors and performers");
-        System.out.println(shop);
-        System.out.println();
-        System.out.println(manager);
-        System.out.println();
-        System.out.println(cashier);
-        System.out.println();
-        System.out.println(guardian);
-        System.out.println();
-        System.out.println(client);
-
+        shop.showTitles();
     }
 
+    /**
+     * Instantiates Shop with specifies Title and Address and fill all Employees with demo data
+     *
+     * @param title   String that specifies Title of the Shop
+     * @param address String that specifies Address of the Shop
+     * @return {@link Shop}
+     */
+    private static Shop shopInit(String title, String address) {
+        Shop shop = new Shop(title, address);
+
+        shop.setManager(new Manager("Petro", "Petrenko", "Petrovich",
+                LocalDate.of(1966, 10, 15), "32223223",
+                LocalDate.of(2018, 12, 12),
+                8000L, "Sales department"));
+
+        shop.setCashier(new Cashier("Valya", "Petrova", "Olegovna",
+                LocalDate.of(1996, 02, 1), "3456-09-09",
+                LocalDate.of(2019, 03, 11),
+                4000L, 25));
+
+        shop.setGuardian(new Guardian("Vasya", "Sidorenko", "Hvedorytch",
+                LocalDate.of(1996, 02, 1), "98734979345",
+                LocalDate.of(2019, 03, 11),
+                5000L));
+
+        shop.setClient(new Client("Valya", "Petrova", "Olegovna",
+                LocalDate.of(1996, 02, 1), "3456-09-09",
+                500000L, "1234-5678-9012-3456"));
+        return shop;
+    }
+
+    /**
+     * Prints all data of Shop and employees
+     */
+    private void showTitles() {
+        System.out.println("\nActors and performers");
+        System.out.println();
+        System.out.println(this);
+        System.out.println();
+        System.out.println(getManager());
+        System.out.println();
+        System.out.println(getCashier());
+        System.out.println();
+        System.out.println(getGuardian());
+        System.out.println();
+        System.out.println(getClient());
+    }
+
+    /**
+     * @return String Shop Title
+     */
     public String getTitle() {
         return title;
     }
@@ -83,6 +118,9 @@ public class Shop {
         this.title = title;
     }
 
+    /**
+     * @return String Shop Address
+     */
     public String getAddress() {
         return address;
     }
@@ -133,32 +171,26 @@ public class Shop {
         System.out.println("\nShop:      The time of the beginning of working time is approaching.");
 
         if (guardian != null) {
-            System.out.print("\nGuardian:  ");
             guardian.comeToWork();
         }
 
         if (cashier != null) {
-            System.out.print("\nCashier:   ");
             cashier.comeToWork();
         }
 
         if (manager != null) {
-            System.out.print("\nManager:   ");
             manager.comeToWork();
         }
 
         if (guardian != null) {
-            System.out.print("\nGuardian:  ");
             guardian.sayHello();
         }
 
         if (cashier != null) {
-            System.out.print("\nCashier:   ");
             cashier.sayHello();
         }
 
         if (manager != null) {
-            System.out.print("\nManager:   ");
             manager.sayHello();
         }
 
@@ -172,20 +204,16 @@ public class Shop {
         System.out.println("\nShop:      The dinner time is approaching.");
 
         if (guardian != null) {
-            System.out.print("\nGuardian:  ");
             guardian.goToHaveLunch();
         }
 
         if (cashier != null) {
-            System.out.print("\nCashier:   ");
             cashier.goToHaveLunch();
         }
 
         if (manager != null) {
-            System.out.print("\nManager:   ");
             manager.goToHaveLunch();
         }
-
     }
 
     /**
@@ -198,44 +226,34 @@ public class Shop {
         System.out.println("\nThe client comes in..");
         System.out.println("\nShop:    Time to make money.");
 
-        System.out.print("\nClient:    ");
-        client.sayHello();
-
-        System.out.print("\nGuardian:  ");
         guardian.talkOnTheRadio();
 
-        System.out.print("\nClient:    ");
+        client.sayHello();
+
         client.sayMeAbout();
 
-        System.out.print("\nManager:   ");
         manager.toWork();
 
-        System.out.print("\nClient:    ");
         client.buyProduct();
 
-        System.out.print("\nCashier:   ");
         cashier.toWork();
 
-        System.out.print("\nGuardian:  ");
         guardian.toWork();
 
-        System.out.print("\nClient:    ");
         client.sayGoodBye();
 
-
         System.out.println("\nShop:      The case is done\n");
-
     }
 
     @Override
     public String toString() {
         return "Shop{ " +
-                "title='" + title + '\'' +
-                ", address='" + address + '\'' +
-                ", manager=" + manager +
-                ", cashier=" + cashier +
-                ", guardian=" + guardian +
-                ", client=" + client +
+                "title='" + getTitle() + '\'' +
+                ", address='" + getAddress() + '\'' +
+                ", manager=" + getManager() +
+                ", cashier=" + getCashier() +
+                ", guardian=" + getGuardian() +
+                ", client=" + getClient() +
                 '}';
     }
 

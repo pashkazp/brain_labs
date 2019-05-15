@@ -1,4 +1,6 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.actors;
+
+import ua.zp.brain.labs.oop.basics.lab14.prototypes.Employee;
 
 import java.time.LocalDate;
 
@@ -30,7 +32,8 @@ public class Cashier extends Employee {
      * @param salary             LocalDate that specifies  the size of the salary.
      * @param cashDeskNumber     Integer that specifies Cashiers DeskNumber
      */
-    public Cashier(String firstName, String lastName, String patronymic, LocalDate birthDay, String phone, LocalDate employmentDateFrom, Long salary, Integer cashDeskNumber) {
+    public Cashier(String firstName, String lastName, String patronymic, LocalDate birthDay,
+                   String phone, LocalDate employmentDateFrom, Long salary, Integer cashDeskNumber) {
         super(firstName, lastName, patronymic, birthDay, phone, employmentDateFrom, salary);
         this.cashDeskNumber = cashDeskNumber;
     }
@@ -47,17 +50,17 @@ public class Cashier extends Employee {
     }
 
     public void countMoney() {
-        System.out.println("Count money. Recount money.");
+        System.out.println("\nCashier:   Count money. Recount money.");
     }
 
     @Override
     public void comeToWork() {
-        System.out.println("Come to work in advance");
+        System.out.println("\nCashier:   Come to work in advance");
     }
 
     @Override
     public void goToHaveLunch() {
-        System.out.println("Quickly go to the utility room. Swallow pieces. Go back to the work place.");
+        System.out.println("\nCashier:   Quickly go to the utility room. Swallow pieces. Go back to the work place.");
     }
 
     @Override
@@ -69,18 +72,18 @@ public class Cashier extends Employee {
 
     @Override
     public void sayHello() {
-        System.out.println("Hello. Do you need a bag?");
+        System.out.println("\nCashier:   Hello. Do you need a bag?");
     }
 
     @Override
     public void sayGoodBye() {
-        System.out.println("Collect chips? Do not want to pay for your phone?");
+        System.out.println("\nCashier:   Collect chips? Do not want to pay for your phone?");
     }
 
     @Override
     public String toString() {
         return "Cashier{ " + super.toString() +
-                "cashDeskNumber=" + cashDeskNumber +
+                "cashDeskNumber=" + getCashDeskNumber() +
                 "}";
     }
 

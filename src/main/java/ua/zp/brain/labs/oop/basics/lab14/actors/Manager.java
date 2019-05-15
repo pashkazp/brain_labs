@@ -1,4 +1,6 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.actors;
+
+import ua.zp.brain.labs.oop.basics.lab14.prototypes.Employee;
 
 import java.time.LocalDate;
 
@@ -30,7 +32,8 @@ public class Manager extends Employee {
      * @param salary             LocalDate that specifies  the size of the salary.
      * @param department         String that specifies the Manager Department
      */
-    public Manager(String firstName, String lastName, String patronymic, LocalDate birthDay, String phone, LocalDate employmentDateFrom, Long salary, String department) {
+    public Manager(String firstName, String lastName, String patronymic, LocalDate birthDay,
+                   String phone, LocalDate employmentDateFrom, Long salary, String department) {
         super(firstName, lastName, patronymic, birthDay, phone, employmentDateFrom, salary);
         this.department = department;
     }
@@ -47,25 +50,25 @@ public class Manager extends Employee {
     }
 
     public void advise() {
-        System.out.println("Look at this novelty. This is just what you do not have enough in life!");
+        System.out.println("\nManager:   Look at this novelty. This is just what you do not have enough in life!");
     }
 
     public void sayAboutDiscount() {
-        System.out.println("It's worth a trifle. Just 1 million. But today we will give a big discount - a cap as a gift.");
+        System.out.println("\nManager:   It's worth a trifle. Just 1 million. But today we will give a big discount - a cap as a gift.");
     }
 
     public void imposePurchase() {
-        System.out.println("Take it! Offer is limited.");
+        System.out.println("\nManager:   Take it! Offer is limited.");
     }
 
     @Override
     public void comeToWork() {
-        System.out.println("After all, the leadership is not late. It is delayed.");
+        System.out.println("\nManager:   After all, the leadership is not late. It is delayed.");
     }
 
     @Override
     public void goToHaveLunch() {
-        System.out.println("I'm at a conference. When I come back - I'll check everyone.");
+        System.out.println("\nManager:   I'm at a conference. When I come back - I'll check everyone.");
     }
 
     @Override
@@ -77,18 +80,18 @@ public class Manager extends Employee {
 
     @Override
     public void sayHello() {
-        System.out.println("Hello everyone!");
+        System.out.println("\nManager:   Hello everyone!");
     }
 
     @Override
     public void sayGoodBye() {
-        System.out.println("Goodbye to everyone. Tomorrow I will come before everyone and check how you are all working late.");
+        System.out.println("\nManager:   Goodbye to everyone. Tomorrow I will come before everyone and check how you are all working late.");
     }
 
     @Override
     public String toString() {
         return "Manager{ " + super.toString() +
-                "department='" + department + "}";
+                "department='" + getDepartment() + "}";
     }
 
     /**

@@ -1,4 +1,6 @@
-package ua.zp.brain.labs.oop.basics.lab14;
+package ua.zp.brain.labs.oop.basics.lab14.actors;
+
+import ua.zp.brain.labs.oop.basics.lab14.prototypes.Employee;
 
 import java.time.LocalDate;
 
@@ -26,28 +28,29 @@ public class Guardian extends Employee {
      * @param employmentDateFrom LocalDate that specifies the date of hiring to work.
      * @param salary             LocalDate that specifies  the size of the salary.
      */
-    public Guardian(String firstName, String lastName, String patronymic, LocalDate birthDay, String phone, LocalDate employmentDateFrom, Long salary) {
+    public Guardian(String firstName, String lastName, String patronymic, LocalDate birthDay,
+                    String phone, LocalDate employmentDateFrom, Long salary) {
         super(firstName, lastName, patronymic, birthDay, phone, employmentDateFrom, salary);
     }
 
     public void talkOnTheRadio() {
-        System.out.println("(to radio) Bu-bu-bu-bu-bu");
+        System.out.println("\nGuardian:  (to radio) Bu-bu-bu-bu-bu");
     }
 
     @Override
     public void goToHaveLunch() {
-        System.out.println("Getting a cucumber from the holster and tasting about half of it.");
+        System.out.println("\nGuardian:  Getting a cucumber from the holster and tasting about half of it.");
     }
 
     @Override
     public void comeToWork() {
-        System.out.println("Get to work before everyone.");
+        System.out.println("\nGuardian:  Get to work before everyone.");
     }
 
     @Override
     public void toWork() {
         talkOnTheRadio();
-        System.out.println("Walks on departments and suspects everyone.");
+        System.out.println("\nGuardian:  Walks on departments and suspects everyone.");
         talkOnTheRadio();
     }
 
