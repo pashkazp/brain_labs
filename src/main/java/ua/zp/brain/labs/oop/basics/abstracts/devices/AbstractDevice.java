@@ -26,9 +26,10 @@ public abstract class AbstractDevice {
      * @param serial String name Device Serial Number
      */
     protected AbstractDevice(String name, String serial) {
-        this();
+        //this();
         this.name = name;
         this.serial = serial;
+        powerOn();
     }
 
     public String getName() {

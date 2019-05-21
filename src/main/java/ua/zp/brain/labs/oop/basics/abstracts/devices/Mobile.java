@@ -65,7 +65,7 @@ public class Mobile extends AbstractPhone {
      */
     @Override
     public void powerOn() {
-        System.out.println("if phone is turned off, turns it on by the press and hold the \"red\" button.");
+        System.out.println("if phone \""+this.getName()+"\" is turned off, turns it on by the press and hold the \"red\" button.");
     }
 
     /**
@@ -73,7 +73,7 @@ public class Mobile extends AbstractPhone {
      */
     @Override
     public void powerOff() {
-        System.out.println("if phone is turned on, turns it off by the press and hold \"red\" button.");
+        System.out.println("if phone \""+this.getName()+"\" is turned on, turns it off by the press and hold \"red\" button.");
     }
 
     /**

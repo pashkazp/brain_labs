@@ -1,7 +1,5 @@
 package ua.zp.brain.labs.oop.basics.abstracts.devices;
 
-import ua.zp.brain.labs.oop.basics.abstracts.devices.AbstractDevice;
-
 /**
  * A telephone is an abstract telephone that is intended for building a tree of telephone devices
  * and is included in the {@link AbstractDevice} home appliances tree.

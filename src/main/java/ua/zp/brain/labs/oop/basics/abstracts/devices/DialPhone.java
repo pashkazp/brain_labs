@@ -76,7 +76,7 @@ public class DialPhone extends AbstractPhone {
      */
     @Override
     public void powerOn() {
-        System.out.println("If device not connected to outlet connect to a telephone outlet");
+        System.out.println("If device \""+this.getName()+"\" not connected to outlet connect to a telephone outlet");
     }
 
     /**
@@ -84,7 +84,7 @@ public class DialPhone extends AbstractPhone {
      */
     @Override
     public void powerOff() {
-        System.out.println("If device connected to outlet disconnect from telephone outlet");
+        System.out.println("If device \""+this.getName()+"\" connected to outlet disconnect from telephone outlet");
     }
 
     @Override

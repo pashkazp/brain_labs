@@ -63,7 +63,7 @@ public class SmartPhone extends Mobile {
      */
     @Override
     public void powerOn() {
-        System.out.println("If device if powered off, press and hold the \"Power button\" and release it after 5 sec.");
+        System.out.println("If device \""+this.getName()+"\" is powered off, press and hold the \"Power button\" and release it after 5 sec.");
     }
 
     /**
@@ -71,7 +71,7 @@ public class SmartPhone extends Mobile {
      */
     @Override
     public void powerOff() {
-        System.out.println("If device if powered on, press the \"Power button\". Touch the \"power off\" icon on the device screen and confirm your choice..");
+        System.out.println("If device \""+this.getName()+"\" is powered on, press the \"Power button\". Touch the \"power off\" icon on the device screen and confirm your choice..");
     }
 
     /**

@@ -18,8 +18,8 @@ public class Oven extends AbstractMultiCooker {
     /**
      * Create the Oven with the given values
      *
-     * @param name
-     * @param serial
+     * @param name   String name of Device
+     * @param serial String name Device Serial Number
      */
     public Oven(String name, String serial) {
         super(name, serial);
@@ -58,7 +58,7 @@ public class Oven extends AbstractMultiCooker {
      */
     @Override
     public void powerOn() {
-        System.out.println("If power switch is off, turn on the toggle switch.");
+        System.out.println("Device: \"" + this.getName() + "\": If power switch is off, turn on the toggle switch.");
     }
 
     /**
@@ -66,7 +66,7 @@ public class Oven extends AbstractMultiCooker {
      */
     @Override
     public void powerOff() {
-        System.out.println("If power switch is on, turn off the toggle switch.");
+        System.out.println("Device: \"" + this.getName() + "\": If power switch is on, turn off the toggle switch.");
     }
 
     @Override

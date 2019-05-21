@@ -18,8 +18,8 @@ public class MultiCooker extends AbstractMultiCooker {
     /**
      * Create MultiCooker device with the given values
      *
-     * @param name
-     * @param serial
+     * @param name   String name of Device
+     * @param serial String name Device Serial Number
      */
     public MultiCooker(String name, String serial) {
         super(name, serial);
@@ -58,7 +58,7 @@ public class MultiCooker extends AbstractMultiCooker {
      */
     @Override
     public void powerOn() {
-        System.out.println("If device not connected to outlet connect device to outlet");
+        System.out.println("If device \"" + this.getName() + "\" not connected to outlet connect device to outlet");
     }
 
     /**
@@ -66,6 +66,6 @@ public class MultiCooker extends AbstractMultiCooker {
      */
     @Override
     public void powerOff() {
-        System.out.println("If device connected to outlet disconnect device from outlet");
+        System.out.println("If device \"" + this.getName() + "\" connected to outlet disconnect device from outlet");
     }
 }
