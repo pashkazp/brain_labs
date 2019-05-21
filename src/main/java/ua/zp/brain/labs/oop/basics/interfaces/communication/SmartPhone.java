@@ -22,8 +22,9 @@ class SmartPhone implements Caller, EmailSender {
     }
 
     @Override
-    public void editMail(String mail) {
+    public String editMail(String mail) {
         System.out.println("new mail " + mail);
+        return "edited ==== " + mail + " ==== edited";
     }
 
 }
