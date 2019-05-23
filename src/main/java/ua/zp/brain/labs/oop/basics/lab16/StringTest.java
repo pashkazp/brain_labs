@@ -1,4 +1,4 @@
-package ua.zp.brain.labs.oop.basics.lav16;
+package ua.zp.brain.labs.oop.basics.lab16;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -73,13 +73,16 @@ public class StringTest {
         sb = new StringBuilder(0);
         ss = sb.append(literal)
                 .append(newString)
-                .append(charStrting).append("\n")
+                .append(charStrting)
+                .append("\n")
                 .append(bytesString)
                 .append(sbString)
-                .append(fruits).append("\n")
+                .append(fruits)
+                .append("\n")
                 .append(nonTrimStringWithUnderscores)
                 .append(stringWithUnderscores)
-                .append(withoutUnderscores).append("\n")
+                .append(withoutUnderscores)
+                .append("\n")
                 .append(ss)
                 .reverse()
                 .toString();
