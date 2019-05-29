@@ -60,6 +60,9 @@ public class Main {
      * @param store specifies Store to perform login
      */
     public static void tryLogin(Store store) {
+        if (store == null) {
+            return;
+        }
         Scanner in = new Scanner(System.in);
         System.out.print("\nВведите логин: ");
         String login = in.next();
