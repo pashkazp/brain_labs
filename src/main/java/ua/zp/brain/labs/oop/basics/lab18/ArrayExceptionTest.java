@@ -12,7 +12,9 @@ public class ArrayExceptionTest {
     }
 
     public static void printArray(int[] array, int start, int end) {
-
+        if (array == null) {
+            return;
+        }
         for (int i = start; i <= end; i++) {
             try {
                 System.out.println(array[i]);

@@ -21,6 +21,9 @@ public class MoneyTransactionUtil {
      * @throws MoneyValueException exception extends {@link RuntimeException} and fires when transaction sum not in allowable interval
      */
     public static void sendTo(String fromCard, String toCard, int transSum) throws AccountException, MoneyValueException {
+        if (fromCard == null || toCard == null || fromCard.isEmpty() || toCard.isEmpty()) {
+            throw new AccountException("один из счетов не определен");
+        }
         if (fromCard.equals(toCard)) {
             throw new AccountException("счета источник и получатель совпадают");
         }
