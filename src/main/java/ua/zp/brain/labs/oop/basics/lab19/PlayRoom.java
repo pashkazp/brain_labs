@@ -9,7 +9,7 @@ public class PlayRoom {
 
         Game[] gamesD = {
                 Game.getDisk("Белоснежка и семь гомов", Game.Genre.GENRE_SPORT,
-                        "Игра, в которой одна грустная устрица наблюдает за спортивніми упражнениями."),
+                        "Игра, в которой одна грустная устрица наблюдает за спортивными упражнениями."),
                 Game.getDisk("Резиновая Зина", Game.Genre.GENRE_RACE,
                         "Игра, в которой резиновую Зину растягивают и мнут."),
                 Game.getDisk("Глубокая глотка", Game.Genre.GENRE_ACTION,
@@ -30,8 +30,8 @@ public class PlayRoom {
             System.out.println(game);
         }
 
-        System.out.println("\nsort by genre...");
-        Arrays.sort(gamesD, (o1, o2) -> o1.getGenre().compareTo(o2.getGenre()));
+        System.out.println("\nsort by genre name...");
+        Arrays.sort(gamesD, (o1, o2) -> o1.getGenre().name().compareTo(o2.getGenre().name()));
 
         for (Game game : gamesD) {
             System.out.println(game);

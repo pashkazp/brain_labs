@@ -90,7 +90,7 @@ public class Game {
     }
 
     /**
-     * Static class that extends of {@link Game} class and represents Game on Disk
+     * Static nested class that extends of {@link Game} class and represents Game on Disk
      */
     public static class GameDisk extends Game {
         private final String description;
@@ -120,7 +120,7 @@ public class Game {
     }
 
     /**
-     * Static class that extends of {@link Game} class and represents Virtual Game
+     * Static nested class that extends of {@link Game} class and represents Virtual Game
      */
     public static class VirtualGame extends Game {
 

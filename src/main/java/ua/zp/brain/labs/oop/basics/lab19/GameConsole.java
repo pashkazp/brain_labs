@@ -184,7 +184,7 @@ public class GameConsole implements Powered {
     }
 
     /**
-     * Object that represents GamePad for {@link GameConsole}
+     * Nested class that represents GamePad for {@link GameConsole}
      */
     public class GamePad implements Powered {
 
