@@ -7,7 +7,7 @@ public class DocumentProcessorUtil {
     }
 
     public static <T extends AbstractData & Storeable> StringData convert(T data) {
-        StringData stringData = new StringData(getCouter(), data.getType(),data);
+        StringData stringData = new StringData(getCounter(), data.getType(),data);
         return stringData;
     }
 
@@ -16,14 +16,14 @@ public class DocumentProcessorUtil {
     }
 
     public static void main(String[] args) {
-        XmlData xmlData = new XmlData(getCouter());
-        NumericData numericData = new NumericData(getCouter());
-        BinaryData binaryData = new BinaryData(getCouter());
+        XmlData xmlData = new XmlData(getCounter());
+        NumericData numericData = new NumericData(getCounter());
+        BinaryData binaryData = new BinaryData(getCounter());
+
         System.out.println(xmlData);
         System.out.println(numericData);
         System.out.println(binaryData);
-
-        System.out.println();
+        System.out.println("================");
 
         String xmlString = "<?xml version=\"1.0\"?><Tests>qwerty</Tests>";
         Double d = 123.456789;
@@ -33,23 +33,21 @@ public class DocumentProcessorUtil {
         build(numericData, d);
         build(binaryData, b);
 
+        System.out.println(xmlData);
+        System.out.println(numericData);
+        System.out.println(binaryData);
+        System.out.println("================");
+
         StringData sdXml = convert(xmlData);
         StringData sdNum = convert(numericData);
         StringData sdBin = convert(binaryData);
 
-        System.out.println(xmlData);
-        System.out.println(numericData);
-        System.out.println(binaryData);
-
-        System.out.println();
-
         System.out.println(sdXml.toString());
         System.out.println(sdNum.toString());
         System.out.println(sdBin.toString());
-
     }
 
-    public static long getCouter() {
+    public static long getCounter() {
         return ID_COUNTER++;
     }
 }
