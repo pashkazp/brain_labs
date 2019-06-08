@@ -1,7 +1,5 @@
 package ua.zp.brain.labs.oop.basics.lab21;
 
-import java.util.Objects;
-
 public class User1 {
     private String name;
     private int old;
@@ -22,13 +20,4 @@ public class User1 {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User1)) return false;
-        User1 user1 = (User1) o;
-        return old == user1.old &&
-                Objects.equals(name, user1.name) &&
-                Objects.equals(phone, user1.phone);
-    }
 }

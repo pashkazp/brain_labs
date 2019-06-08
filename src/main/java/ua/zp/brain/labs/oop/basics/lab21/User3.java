@@ -28,8 +28,8 @@ public class User3 {
         if (!(o instanceof User3)) return false;
         User3 user3 = (User3) o;
         return old == user3.old &&
-                Objects.equals(name, user3.name) &&
-                Objects.equals(phone, user3.phone);
+                name.equals(user3.name) &&
+                phone.equals(user3.phone);
     }
 
     @Override

@@ -27,9 +27,7 @@ public class User2 {
         if (this == o) return true;
         if (!(o instanceof User2)) return false;
         User2 user2 = (User2) o;
-        return old == user2.old &&
-                Objects.equals(name, user2.name) &&
-                Objects.equals(phone, user2.phone);
+        return name.equals(user2.name);
     }
 
     @Override
