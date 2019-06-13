@@ -55,7 +55,7 @@ public class Main {
         Map<Integer, String> map1 = new LinkedHashMap<>();
         for (Month m : Month.values()) {
             map1.put(map1.size(),
-                    m.getDisplayName(TextStyle.FULL_STANDALONE, new Locale("UK")));
+                    m.getDisplayName(TextStyle.FULL_STANDALONE, new Locale("uk")));
         }
         System.out.println(map1.get(0));
         System.out.println(map1.get(11));
@@ -106,6 +106,7 @@ public class Main {
         userSet.add(u23);
 
         userSet.forEach(System.out::println);
+
         System.out.println("------------- name old phone hashcode ---------");
 
         userSet.clear();
@@ -118,7 +119,6 @@ public class Main {
         userSet.add(u33);
 
         userSet.forEach(System.out::println);
-
     }
 
     public static void printEntrySet(Set<Map.Entry<Integer, String>> set) {
