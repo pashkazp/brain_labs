@@ -2,6 +2,7 @@ package ua.zp.brain.labs.oop.basics.lab22;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static java.lang.Thread.sleep;
 
@@ -18,6 +19,7 @@ public class RaceCarRunnable extends Car {
     private int distance;
     private CountDownLatch cdl;
     private long finishTime;
+    private AtomicLong startRaceTime;
 
     /**
      * Cunstruct Race Car with specified values
@@ -27,10 +29,11 @@ public class RaceCarRunnable extends Car {
      * @param distance int Distance of Race
      * @param cdl      CountDownLatch for Finish
      */
-    public RaceCarRunnable(String name, int speed, int distance, CountDownLatch cdl) {
+    public RaceCarRunnable(String name, int speed, int distance, CountDownLatch cdl, AtomicLong startRaceTime) {
         super(name, speed);
         this.distance = distance;
         this.cdl = cdl;
+        this.startRaceTime = startRaceTime;
     }
 
     public long getFinishTime() {
@@ -53,6 +56,9 @@ public class RaceCarRunnable extends Car {
      */
     @Override
     public void run() {
+        if (startRaceTime == null) {
+            startRaceTime = new AtomicLong(System.currentTimeMillis());
+        }
         while (!isFinish()) {
             try {
 
@@ -64,7 +70,7 @@ public class RaceCarRunnable extends Car {
                 if (passed >= distance) {
                     cdl.countDown();
                     finish = true;
-                    finishTime = System.currentTimeMillis() - Race.startRaceTime.get();
+                    finishTime = System.currentTimeMillis() - startRaceTime.get();
                     System.out.println(getName() + " finished in " + finishTime + " time intervals !!!");
                 } else {
                     System.out.printf("\'%s\' => speed: %d; progress: %d/%d\n", getName(), currentSpeed, passed, distance);

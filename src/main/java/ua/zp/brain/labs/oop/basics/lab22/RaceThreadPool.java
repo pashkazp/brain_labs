@@ -2,16 +2,19 @@ package ua.zp.brain.labs.oop.basics.lab22;
 
 import java.util.ArrayList;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static java.lang.Thread.sleep;
 
 /**
- * Emulate multithreaded Car racing with  Thread start
+ * Emulate multithreading Car Racing with ThreadPool
  */
-public class Race {
+public class RaceThreadPool {
 
     private static AtomicLong startRaceTime;
+    private static ExecutorService executor;
 
     public static void main(String[] args) {
         ArrayList<RaceCarRunnable> cars = new ArrayList<>();
@@ -19,18 +22,17 @@ public class Race {
         CountDownLatch cdl = new CountDownLatch(5);
         startRaceTime = new AtomicLong();
 
-        cars.add(new RaceCarRunnable("Killer", 100, 1000, cdl, startRaceTime));
-        cars.add(new RaceCarRunnable("Beeper", 95, 1000, cdl, startRaceTime));
-        cars.add(new RaceCarRunnable("Bomber", 77, 1000, cdl, startRaceTime));
-        cars.add(new RaceCarRunnable("Joker", 99, 1000, cdl, startRaceTime));
-        cars.add(new RaceCarRunnable("Turtle", 88, 1000, cdl, startRaceTime));
+        cars.add(new RaceCarRunnable("Killer", 100, 1000, cdl, null));
+        cars.add(new RaceCarRunnable("Beeper", 95, 1000, cdl, null));
+        cars.add(new RaceCarRunnable("Bomber", 77, 1000, cdl, null));
+        cars.add(new RaceCarRunnable("Joker", 99, 1000, cdl, null));
+        cars.add(new RaceCarRunnable("Turtle", 88, 1000, cdl, null));
 
+        executor = Executors.newFixedThreadPool(2);
         startRace(cars);
 
-        try {
-            cdl.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        executor.shutdown();
+        while (!executor.isTerminated()) {
         }
 
         int winner = -1;
@@ -46,11 +48,6 @@ public class Race {
     }
 
     public static void startRace(ArrayList<RaceCarRunnable> cars) {
-        ArrayList<Thread> threads = new ArrayList<>();
-
-        for (RaceCarRunnable rc : cars) {
-            threads.add(new Thread(rc));
-        }
 
         int countStart = 3;
         while (countStart >= 0) {
@@ -71,8 +68,8 @@ public class Race {
 
         startRaceTime.set(System.currentTimeMillis());
 
-        for (Thread t : threads) {
-            t.start();
+        for (RaceCarRunnable car : cars) {
+            executor.execute(car);
         }
     }
 }
