@@ -1,6 +1,7 @@
 package ua.zp.brain.labs.oop.basics.lab22;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,7 +15,7 @@ public class Race {
     private static AtomicLong startRaceTime;
 
     public static void main(String[] args) {
-        ArrayList<RaceCarRunnable> cars = new ArrayList<>();
+        List<RaceCarRunnable> cars = new ArrayList<>();
 
         CountDownLatch cdl = new CountDownLatch(5);
         startRaceTime = new AtomicLong();
@@ -25,7 +26,12 @@ public class Race {
         cars.add(new RaceCarRunnable("Joker", 99, 1000, cdl, startRaceTime));
         cars.add(new RaceCarRunnable("Turtle", 88, 1000, cdl, startRaceTime));
 
-        startRace(cars);
+        List<Thread> threads = new ArrayList<>();
+
+        for (RaceCarRunnable rc : cars) {
+            threads.add(new Thread(rc));
+        }
+        startRace(threads);
 
         try {
             cdl.await();
@@ -42,37 +48,40 @@ public class Race {
             }
         }
         System.out.println("\nAll finished--------------------------------------------------------");
-        System.out.println(cars.get(winner).getName() + " winner of the race with time " + bestTime + " !!!");
+        System.out.println(cars.get(winner).getName() + " winner of the race with time " + bestTime / 1000 + " !!!");
     }
 
-    public static void startRace(ArrayList<RaceCarRunnable> cars) {
-        ArrayList<Thread> threads = new ArrayList<>();
+    public static void startRace(List<Thread> threads) {
 
-        for (RaceCarRunnable rc : cars) {
-            threads.add(new Thread(rc));
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int countStart = 3;
+                while (countStart >= 0) {
+                    switch (countStart) {
+                        case 0:
+                            System.out.println("GO!!!\n");
+                            break;
+                        default:
+                            System.out.printf("%d...\n", countStart);
+                    }
+                    countStart--;
+                    try {
+                        sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
-        int countStart = 3;
-        while (countStart >= 0) {
-            switch (countStart) {
-                case 0:
-                    System.out.println("GO!!!\n");
-                    break;
-                default:
-                    System.out.printf("%d...\n", countStart);
+                startRaceTime.set(System.currentTimeMillis());
+
+                for (Thread t : threads) {
+                    t.start();
+                }
+
             }
-            countStart--;
-            try {
-                sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+        ).start();
 
-        startRaceTime.set(System.currentTimeMillis());
-
-        for (Thread t : threads) {
-            t.start();
-        }
     }
 }

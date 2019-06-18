@@ -1,10 +1,10 @@
 package ua.zp.brain.labs.oop.basics.lab22;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicLong;
 
 import static java.lang.Thread.sleep;
 
@@ -13,14 +13,12 @@ import static java.lang.Thread.sleep;
  */
 public class RaceThreadPool {
 
-    private static AtomicLong startRaceTime;
     private static ExecutorService executor;
 
     public static void main(String[] args) {
-        ArrayList<RaceCarRunnable> cars = new ArrayList<>();
+        List<RaceCarRunnable> cars = new ArrayList<>();
 
         CountDownLatch cdl = new CountDownLatch(5);
-        startRaceTime = new AtomicLong();
 
         cars.add(new RaceCarRunnable("Killer", 100, 1000, cdl, null));
         cars.add(new RaceCarRunnable("Beeper", 95, 1000, cdl, null));
@@ -28,11 +26,18 @@ public class RaceThreadPool {
         cars.add(new RaceCarRunnable("Joker", 99, 1000, cdl, null));
         cars.add(new RaceCarRunnable("Turtle", 88, 1000, cdl, null));
 
-        executor = Executors.newFixedThreadPool(2);
-        startRace(cars);
+        List<Thread> threads = new ArrayList<>();
 
-        executor.shutdown();
-        while (!executor.isTerminated()) {
+        for (RaceCarRunnable rc : cars) {
+            threads.add(new Thread(rc));
+        }
+        executor = Executors.newFixedThreadPool(2);
+        startRace(threads);
+
+        try {
+            cdl.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
         int winner = -1;
@@ -44,32 +49,35 @@ public class RaceThreadPool {
             }
         }
         System.out.println("\nAll finished--------------------------------------------------------");
-        System.out.println(cars.get(winner).getName() + " winner of the race with time " + bestTime + " !!!");
+        System.out.println(cars.get(winner).getName() + " winner of the race with time " + bestTime / 1000 + " !!!");
     }
 
-    public static void startRace(ArrayList<RaceCarRunnable> cars) {
+    public static void startRace(List<Thread> threads) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        int countStart = 3;
-        while (countStart >= 0) {
-            switch (countStart) {
-                case 0:
-                    System.out.println("GO!!!\n");
-                    break;
-                default:
-                    System.out.printf("%d...\n", countStart);
+                int countStart = 3;
+                while (countStart >= 0) {
+                    switch (countStart) {
+                        case 0:
+                            System.out.println("GO!!!\n");
+                            break;
+                        default:
+                            System.out.printf("%d...\n", countStart);
+                    }
+                    countStart--;
+                    try {
+                        sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                for (Thread t : threads) {
+                    executor.execute(t);
+                }
+                executor.shutdown();
             }
-            countStart--;
-            try {
-                sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        startRaceTime.set(System.currentTimeMillis());
-
-        for (RaceCarRunnable car : cars) {
-            executor.execute(car);
-        }
+        }).start();
     }
 }

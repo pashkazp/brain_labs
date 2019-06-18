@@ -71,7 +71,7 @@ public class RaceCarRunnable extends Car {
                     cdl.countDown();
                     finish = true;
                     finishTime = System.currentTimeMillis() - startRaceTime.get();
-                    System.out.println(getName() + " finished in " + finishTime + " time intervals !!!");
+                    System.out.println(getName() + " finished in " + finishTime/1000 + " time intervals !!!");
                 } else {
                     System.out.printf("\'%s\' => speed: %d; progress: %d/%d\n", getName(), currentSpeed, passed, distance);
                 }
