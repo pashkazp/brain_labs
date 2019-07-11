@@ -10,6 +10,7 @@ import java.util.Objects;
  */
 public class CreditCard implements Serializable, Externalizable {
     private static final long serialVersionUID = -4312450334808717373L;
+    public volatile Thread newTread;
     private CardType cardType;
     private String bankName;
     private String cardNumber;
@@ -82,7 +83,8 @@ public class CreditCard implements Serializable, Externalizable {
     @Override
     public String toString() {
         return "CreditCard{" +
-                "cardType=" + cardType +
+                "newTread=" + newTread +
+                ", cardType=" + cardType +
                 ", bankName='" + bankName + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", exp='" + exp + '\'' +
